@@ -87,7 +87,7 @@ function echoTable($table, $ranking, $points, $rates, $path) {
 	$rounds = $table['rounds'];
 	$teams = $table['teams'];
 	$games = $table['games'];
-	echo "<div>";
+	echo '<div style="overflow: auto;">';
 	echoBackLink($path);
 	echo '<table class="table table-condensed table-bordered">';
 	echoHeader($groupName, $teams);
