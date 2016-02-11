@@ -104,7 +104,10 @@ function echoTable($table, $ranking, $points, $rates, $path) {
 function echoGroups($groups, $path) {
 	echo '<ul>';
 	foreach ($groups as $groupId => $groupName) {
-		echo "<li><a href=\"$path?group=$groupId\">$groupName</a></li>";
+		echo '<li>';
+		echo "<a href=\"$path?group=$groupId&display=results\">$groupName</a>";
+		echo " (<a href=\"$path?group=$groupId\">Kreuztabelle</a>)";
+		echo '</li>';
 	}
 	echo '</ul';
 }
@@ -121,6 +124,10 @@ if (isset($this->jsonTable)) {
 	$points = $jsonTable['points'];
 	$rates = $jsonTable['rates'];
 	echoTable($table, $ranking, $points, $rates, $path);
+}
+if (isset($this->results)) {
+	echoBackLink($path);
+	echo $this->results;
 }
 if ($this->editmode) {
 	?>
